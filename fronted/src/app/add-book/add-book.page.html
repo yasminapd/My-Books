@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Añadir Libro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="form-container">
+    <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+      
+      <!-- Campo Título -->
+      <ion-item>
+        <ion-label position="stacked">Título *</ion-label>
+        <ion-input 
+          formControlName="title" 
+          placeholder="Ingresa el título del libro">
+        </ion-input>
+      </ion-item>
+      <div *ngIf="bookForm.get('title')?.invalid && bookForm.get('title')?.touched" class="error-message">
+        <p *ngIf="bookForm.get('title')?.errors?.['required']">El título es requerido</p>
+        <p *ngIf="bookForm.get('title')?.errors?.['minlength']">El título debe tener al menos 3 caracteres</p>
+      </div>
+
+      <!-- Campo Autor -->
+      <ion-item>
+        <ion-label position="stacked">Autor *</ion-label>
+        <ion-input 
+          formControlName="author" 
+          placeholder="Ingresa el nombre del autor">
+        </ion-input>
+      </ion-item>
+      <div *ngIf="bookForm.get('author')?.invalid && bookForm.get('author')?.touched" class="error-message">
+        <p *ngIf="bookForm.get('author')?.errors?.['required']">El autor es requerido</p>
+        <p *ngIf="bookForm.get('author')?.errors?.['minlength']">El autor debe tener al menos 2 caracteres</p>
+      </div>
+
+      <!-- Botones -->
+      <div class="button-container">
+        <ion-button 
+          expand="block" 
+          type="submit" 
+          [disabled]="bookForm.invalid">
+          Guardar Libro
+        </ion-button>
+        
+        <ion-button 
+          expand="block" 
+          fill="outline" 
+          color="medium" 
+          (click)="onCancel()">
+          Cancelar
+        </ion-button>
+      </div>
+
+    </form>
+  </div>
+</ion-content>

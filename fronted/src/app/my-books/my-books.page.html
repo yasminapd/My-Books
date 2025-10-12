@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="goHome()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Mis libros</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item *ngFor="let b of books">
+    <ion-label>
+      <h1>{{b.title}}</h1>
+      <p>{{b.author}}</p>
+    </ion-label>
+    <ion-button fill="clear" (click)="editBook(b.id)">
+      <ion-icon name="create"></ion-icon>
+    </ion-button>
+    <ion-button fill="clear" color="danger" (click)="deleteBook(b.id)">
+      <ion-icon name="trash"></ion-icon>
+    </ion-button>
+  </ion-item>
+</ion-content>

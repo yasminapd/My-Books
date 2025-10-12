@@ -1,0 +1,22 @@
+.form-container {
+  padding: 20px;
+}
+
+.error-message {
+  padding: 8px 16px;
+  margin-bottom: 10px;
+  
+  p {
+    color: #e74c3c;
+    font-size: 0.875rem;
+    margin: 0;
+  }
+}
+
+.button-container {
+  margin-top: 30px;
+  
+  ion-button {
+    margin-bottom: 15px;
+  }
+}
