@@ -126,6 +126,13 @@ curl -X POST http://localhost:8080/api/books \
 curl http://localhost:8080/api/books
 ```
 
+### 📋 Postman Collection
+Para facilitar las pruebas de la API, puedes usar nuestra colección de Postman que incluye todos los endpoints configurados:
+
+**[📎 Ver Collection de Postman](https://documenter.getpostman.com/view/48949757/2sB3QMKUGM)**
+
+La colección incluye ejemplos de todas las operaciones CRUD con datos de prueba.
+
 ## 📱 Páginas de la Aplicación
 
 ### 🏠 Home
