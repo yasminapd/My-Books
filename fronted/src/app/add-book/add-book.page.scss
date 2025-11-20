@@ -1,22 +1,22 @@
-.form-container {
-  padding: 20px;
-}
+.photo-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
 
-.error-message {
-  padding: 8px 16px;
-  margin-bottom: 10px;
-  
-  p {
-    color: #e74c3c;
-    font-size: 0.875rem;
-    margin: 0;
+  .photo-preview {
+    width: 110px;
+    height: 110px;
+    margin-bottom: 0.75rem;
+    background: #f2f2f2;
+    ion-icon {
+      font-size: 48px;
+      color: var(--ion-color-medium);
+    }
   }
-}
 
-.button-container {
-  margin-top: 30px;
-  
-  ion-button {
-    margin-bottom: 15px;
+  &__actions {
+    display: flex;
+    gap: 0.5rem;
   }
 }
