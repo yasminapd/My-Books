@@ -1,0 +1,9 @@
+ion-item {
+  --min-height: 80px;
+
+  ion-thumbnail {
+    width: 56px;
+    height: 56px;
+    --border-radius: 8px;
+  }
+}

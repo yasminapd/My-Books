@@ -7,6 +7,9 @@ module.exports = (sequelize, Sequelize) => {
         },
         author: {
             type: Sequelize.STRING
+        },
+        coverImage: {
+            type: Sequelize.TEXT   // almacena dataURL/base64 sin truncar
         }
     });
     

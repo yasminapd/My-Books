@@ -14,7 +14,8 @@ exports.create = (req, res) => {
     // Create a Book
     const book = {
         title: req.body.title,
-        author: req.body.author
+        author: req.body.author,
+        coverImage: req.body.coverImage || null
     };
 
     // Save Book in the database
@@ -68,6 +69,12 @@ exports.findOne = (req, res) => {
 // Update a Book by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
+
+    const payload = {
+        title: req.body.title,
+        author: req.body.author,
+        coverImage: req.body.coverImage ?? null
+    };
 
     Book.update(req.body, {
         where: { id: id }
