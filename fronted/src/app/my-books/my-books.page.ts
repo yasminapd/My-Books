@@ -11,6 +11,24 @@ import { BookService } from '../services/book-service';
 export class MyBooksPage implements OnInit {
   books: any[] = [];
   filteredBooks: any[] = [];
+  isConfirmOpen = false;
+  bookToDelete: number | null = null;
+
+  alertButtons = [
+    {
+      text: 'Cancelar',
+      role: 'cancel',
+      handler: () => {
+        this.isConfirmOpen = false;
+        this.bookToDelete = null;
+      },
+    },
+    {
+      text: 'Eliminar',
+      role: 'destructive',
+      handler: () => this.confirmDelete(),
+    },
+  ];
 
   constructor(private bookService: BookService, private router: Router) {}
 
@@ -41,12 +59,28 @@ export class MyBooksPage implements OnInit {
     this.router.navigate(['/edit-book', id]);
   }
 
-  deleteBook(id: number) {
-    if (confirm('¿Estás seguro de eliminar este libro?')) {
-      this.bookService.deleteBook(id).subscribe(() => {
-        this.getAllBooks();
-      });
+  promptDelete(id: number) {
+    this.bookToDelete = id;
+    this.isConfirmOpen = true;
+  }
+
+  closeAlert() {
+    this.isConfirmOpen = false;
+    this.bookToDelete = null;
+  }
+
+  confirmDelete() {
+    if (this.bookToDelete == null) {
+      return false;
     }
+
+    this.bookService.deleteBook(this.bookToDelete).subscribe(() => {
+      this.getAllBooks();
+      this.isConfirmOpen = false;
+      this.bookToDelete = null;
+    });
+
+    return true;
   }
 
   goHome() {

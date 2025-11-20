@@ -25,9 +25,18 @@
       <ion-button fill="clear" (click)="editBook(b.id)">
         <ion-icon name="create"></ion-icon>
       </ion-button>
-      <ion-button fill="clear" color="danger" (click)="deleteBook(b.id)">
+      <ion-button fill="clear" color="danger" (click)="promptDelete(b.id)">
         <ion-icon name="trash"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-list>
+
+
+  <ion-alert
+    [isOpen]="isConfirmOpen"
+    header="Eliminar libro"
+    message="¿Deseas borrar este libro?"
+    [buttons]="alertButtons"
+    (didDismiss)="closeAlert()">
+  </ion-alert>
 </ion-content>
