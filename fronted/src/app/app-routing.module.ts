@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'edit-book/:id',
     loadChildren: () => import('./edit-book/edit-book.module').then( m => m.EditBookPageModule)
   },
+  {
+    path: 'config',
+    loadChildren: () => import('./config/config.module').then(m => m.ConfigPageModule)
+  },
 ];
 
 @NgModule({

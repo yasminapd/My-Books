@@ -22,4 +22,8 @@ export class HomePage {
     this.router.navigate(['/add-book']);
   }
 
+  gotoConfig() {
+    this.router.navigate(['/config']);
+  }
+
 }

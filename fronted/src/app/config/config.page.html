@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="goHome()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Configuración</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="form" (ngSubmit)="save()" class="config-form">
+    <ion-item>
+      <ion-label position="stacked">URL del backend</ion-label>
+      <ion-input
+        formControlName="apiBaseUrl"
+        placeholder="http://192.168.1.135:8080/api"
+        autocomplete="off"
+      ></ion-input>
+    </ion-item>
+
+    <ion-text
+      color="danger"
+      *ngIf="form.get('apiBaseUrl')?.invalid && form.get('apiBaseUrl')?.touched"
+    >
+      Debe introducir una URL válida.
+    </ion-text>
+
+    <ion-button type="submit" expand="block" class="ion-margin-top">
+      Guardar
+    </ion-button>
+
+    <ion-text color="success" *ngIf="saved">
+      Cambios guardados.
+    </ion-text>
+  </form>
+</ion-content>
