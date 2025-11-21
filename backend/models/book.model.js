@@ -9,7 +9,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         },
         coverImage: {
-            type: Sequelize.TEXT   // almacena dataURL/base64 sin truncar
+            type: Sequelize.TEXT('long') // permite almacenar base64 grandes
         }
     });
     
