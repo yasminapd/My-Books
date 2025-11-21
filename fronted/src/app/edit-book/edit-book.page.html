@@ -12,12 +12,32 @@
 <ion-content [fullscreen]="true">
   <div class="form-container">
     <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
-      
+
+      <!-- Preview de Imagen -->
+      <div class="photo-section">
+        <ion-avatar class="photo-preview">
+          <img *ngIf="previewImage" [src]="previewImage" alt="Preview" />
+          <ion-icon *ngIf="!previewImage" name="image-outline"></ion-icon>
+        </ion-avatar>
+
+        <div class="photo-buttons">
+          <ion-button fill="clear" size="small" (click)="pickFromGallery()">
+            <ion-icon slot="start" name="images-outline"></ion-icon>
+            Galería
+          </ion-button>
+
+          <ion-button fill="clear" size="small" (click)="takePhoto()">
+            <ion-icon slot="start" name="camera-outline"></ion-icon>
+            Cámara
+          </ion-button>
+        </div>
+      </div>
+
       <!-- Campo Título -->
       <ion-item>
         <ion-label position="stacked">Título *</ion-label>
-        <ion-input 
-          formControlName="title" 
+        <ion-input
+          formControlName="title"
           placeholder="Ingresa el título del libro">
         </ion-input>
       </ion-item>
@@ -29,8 +49,8 @@
       <!-- Campo Autor -->
       <ion-item>
         <ion-label position="stacked">Autor *</ion-label>
-        <ion-input 
-          formControlName="author" 
+        <ion-input
+          formControlName="author"
           placeholder="Ingresa el nombre del autor">
         </ion-input>
       </ion-item>
@@ -41,17 +61,17 @@
 
       <!-- Botones -->
       <div class="button-container">
-        <ion-button 
-          expand="block" 
-          type="submit" 
+        <ion-button
+          expand="block"
+          type="submit"
           [disabled]="bookForm.invalid">
           Actualizar Libro
         </ion-button>
-        
-        <ion-button 
-          expand="block" 
-          fill="outline" 
-          color="medium" 
+
+        <ion-button
+          expand="block"
+          fill="outline"
+          color="medium"
           (click)="onCancel()">
           Cancelar
         </ion-button>
